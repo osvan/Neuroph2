@@ -86,6 +86,12 @@ public class CrossValidation1 {
 //                = new DataSetRow(new double[]{1, 0}, new double[]{1});
 //        ds.addRow(rFour);
         //importar dataset
+        DataSet ds1 = new DataSet(1,2);
+        
+        for (int i = 0; i < 10; i++) {
+            
+        }
+        DataSetRow dataSetRow = new DataSetRow();
         String inputFileName = "C:\\Users\\darku\\Documents\\Datasets\\test.csv";
         DataSet dataSet = DataSet.createFromFile(inputFileName, 2, 1, ",", false);
        
