@@ -88,6 +88,7 @@ public class CrossValidation1 {
         //importar dataset
         String inputFileName = "C:\\Users\\darku\\Documents\\Datasets\\test.csv";
         DataSet dataSet = DataSet.createFromFile(inputFileName, 2, 1, ",", false);
+       
 
         BackPropagation backPropagation = new BackPropagation();
         backPropagation.setMaxIterations(1000);
@@ -102,6 +103,7 @@ public class CrossValidation1 {
 
         //Testing 0 1
         ann.setInput(0, 1);
+        
         ann.calculate();
         double[] networkOutputOne = ann.getOutput();
         print("0, 1", networkOutputOne[0], 1.0);
