@@ -91,6 +91,7 @@ public class CrossValidation1 {
         for (int i = 0; i < 10; i++) {
             
         }
+        
         DataSetRow dataSetRow = new DataSetRow();
         String inputFileName = "C:\\Users\\darku\\Documents\\Datasets\\test.csv";
         DataSet dataSet = DataSet.createFromFile(inputFileName, 2, 1, ",", false);
@@ -119,6 +120,7 @@ public class CrossValidation1 {
         ann.calculate();
         print("1, 1", ann.getOutput()[0], 0.0);
 
+        //oui
     }
 
     public static void print(String input, double output, double actual) {
