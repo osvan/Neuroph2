@@ -1,5 +1,6 @@
 package crossvalidation;
 
+import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 import org.neuroph.core.Layer;
 import org.neuroph.core.NeuralNetwork;
@@ -59,7 +60,10 @@ public class CrossValidation1 {
         ann.setInputNeurons(inputLayer.getNeurons());
         ann.setOutputNeurons(outputLayer.getNeurons());
         
-       
+       System.out.println("Antes");
+        for(Weight peso:ann.getLayerAt(1).getNeurons().get(0).getWeights()){
+            System.out.println(peso.getValue());
+        }
 
         System.out.println("Neuronas en capa 0: " + ann.getLayerAt(0).getNeuronsCount());
         System.out.println("Neuronas en capa 1: " + ann.getLayerAt(1).getNeuronsCount());
@@ -86,17 +90,19 @@ public class CrossValidation1 {
 //                = new DataSetRow(new double[]{1, 0}, new double[]{1});
 //        ds.addRow(rFour);
         //importar dataset
-        DataSet ds1 = new DataSet(1,2);
         
-        for (int i = 0; i < 10; i++) {
+        DataSet ds1 = new DataSet(1,2);
+        DataSetRow dsRow = new DataSetRow();
+        ArrayList<Double[]> trainingDS = new ArrayList();
+        for (int i = 0; i < 10; i++) {            
+            ds1.addRow(dsRow);
             
         }
         
-        DataSetRow dataSetRow = new DataSetRow();
+               
         String inputFileName = "C:\\Users\\darku\\Documents\\Datasets\\test.csv";
-        DataSet dataSet = DataSet.createFromFile(inputFileName, 2, 1, ",", false);
+        DataSet dataSet = DataSet.createFromFile(inputFileName, 2, 1, ",");
        
-
         BackPropagation backPropagation = new BackPropagation();
         backPropagation.setMaxIterations(1000);
         ann.learn(dataSet, backPropagation);
@@ -107,7 +113,6 @@ public class CrossValidation1 {
         CrossValidationResult results = crossval.getResult();
         results.printResult();  
         
-
         //Testing 0 1
         ann.setInput(0, 1);
         
