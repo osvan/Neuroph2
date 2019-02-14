@@ -110,22 +110,26 @@ public class CrossValidation1 {
 //            ds1.addRow(dsRow);
             
        // }
-        
-               
-        //String inputFileName = "C:\\Users\\darku\\Documents\\Datasets\\test.csv";
-        String inputFileName = "C:\\Users\\Donato\\Documents\\ITVER\\10MO SEMESTRE\\Residencias\\newTest.csv";
+           //String inputFileName = "C:\\Users\\darku\\Documents\\Datasets\\test.csv";
+        //String inputFileName = "C:\\Users\\Donato\\Documents\\ITVER\\10MO SEMESTRE\\Residencias\\newTest.csv";
+        String inputFileName = "C:\\Users\\darku\\Documents\\Datasets\\test.csv";
         DataSet dataSet = DataSet.createFromFile(inputFileName, 2, 1, ",");
-       
+
         BackPropagation backPropagation = new BackPropagation();
         backPropagation.setMaxIterations(1000);
         ann.learn(dataSet, backPropagation);
-        
+
+        System.out.println("Despues");
+        for (Weight peso : ann.getLayerAt(1).getNeurons().get(0).getWeights()) {
+            System.out.println(peso.getValue());
+        }
+
         CrossValidation crossval = new CrossValidation(ann, dataSet, 5);
-                                                                                  
+
         crossval.run();
         CrossValidationResult results = crossval.getResult();
-        results.printResult();  
-        
+        results.printResult();
+
         //Testing 0 1
         ann.setInput(0, 1);
         
