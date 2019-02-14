@@ -25,26 +25,35 @@ public class CrossValidation1 {
     public static void main(String[] args) throws InterruptedException, ExecutionException {
         //Define input layer
         Layer inputLayer = new Layer();
-        inputLayer.addNeuron(new Neuron());
-        inputLayer.addNeuron(new Neuron());
+        for (int k = 0; k < 2; k++) {
+            inputLayer.addNeuron(new Neuron());
+        }
+//        inputLayer.addNeuron(new Neuron());
+//        inputLayer.addNeuron(new Neuron());
 
         //Implement hidden layer 1
         Layer hiddenLayerOne = new Layer();
-        hiddenLayerOne.addNeuron(new Neuron());
-        hiddenLayerOne.addNeuron(new Neuron());
-        hiddenLayerOne.addNeuron(new Neuron());
-        hiddenLayerOne.addNeuron(new Neuron());
+        for (int i = 0; i < 4; i++) {
+            hiddenLayerOne.addNeuron(new Neuron());
+        }
+//        hiddenLayerOne.addNeuron(new Neuron());
+//        hiddenLayerOne.addNeuron(new Neuron());
+//        hiddenLayerOne.addNeuron(new Neuron());
+//        hiddenLayerOne.addNeuron(new Neuron());
 
         //Implement hidden layer 2
         Layer hiddenLayerTwo = new Layer();
-        hiddenLayerTwo.addNeuron(new Neuron());
-        hiddenLayerTwo.addNeuron(new Neuron());
-        hiddenLayerTwo.addNeuron(new Neuron());
-        hiddenLayerTwo.addNeuron(new Neuron());
+        for (int j = 0; j < 4; j++) {
+            hiddenLayerTwo.addNeuron(new Neuron());
+        }
+//        hiddenLayerTwo.addNeuron(new Neuron());
+//        hiddenLayerTwo.addNeuron(new Neuron());
+//        hiddenLayerTwo.addNeuron(new Neuron());
+//        hiddenLayerTwo.addNeuron(new Neuron());
 
         //Output
         Layer outputLayer = new Layer();
-        outputLayer.addNeuron(new Neuron());
+        outputLayer.addNeuron(new Neuron()); //Creación de una sola neurona de salida
 
         //Neural Network
         NeuralNetwork ann = new NeuralNetwork();
@@ -65,10 +74,13 @@ public class CrossValidation1 {
             System.out.println(peso.getValue());
         }
 
-        System.out.println("Neuronas en capa 0: " + ann.getLayerAt(0).getNeuronsCount());
-        System.out.println("Neuronas en capa 1: " + ann.getLayerAt(1).getNeuronsCount());
-        System.out.println("Neuronas en capa 2: " + ann.getLayerAt(2).getNeuronsCount());
-        System.out.println("Neuronas en capa 3: " + ann.getLayerAt(3).getNeuronsCount());
+        for (int t = 0; t < 4; t++) {
+            System.out.println("Neuronas en capa "+ t +":"  + ann.getLayerAt(t).getNeuronsCount());
+        }
+//        System.out.println("Neuronas en capa 0: " + ann.getLayerAt(0).getNeuronsCount());
+//        System.out.println("Neuronas en capa 1: " + ann.getLayerAt(1).getNeuronsCount());
+//        System.out.println("Neuronas en capa 2: " + ann.getLayerAt(2).getNeuronsCount());
+//        System.out.println("Neuronas en capa 3: " + ann.getLayerAt(3).getNeuronsCount());
 
         //Training
 //        int inputSize = 2;
@@ -91,16 +103,17 @@ public class CrossValidation1 {
 //        ds.addRow(rFour);
         //importar dataset
         
-        DataSet ds1 = new DataSet(1,2);
-        DataSetRow dsRow = new DataSetRow();
-        ArrayList<Double[]> trainingDS = new ArrayList();
-        for (int i = 0; i < 10; i++) {            
-            ds1.addRow(dsRow);
+//        DataSet ds1 = new DataSet(1,2);
+//        DataSetRow dsRow = new DataSetRow();
+//        ArrayList<Double[]> trainingDS = new ArrayList();
+//        for (int i = 0; i < 10; i++) {            
+//            ds1.addRow(dsRow);
             
-        }
+       // }
         
                
-        String inputFileName = "C:\\Users\\darku\\Documents\\Datasets\\test.csv";
+        //String inputFileName = "C:\\Users\\darku\\Documents\\Datasets\\test.csv";
+        String inputFileName = "C:\\Users\\Donato\\Documents\\ITVER\\10MO SEMESTRE\\Residencias\\newTest.csv";
         DataSet dataSet = DataSet.createFromFile(inputFileName, 2, 1, ",");
        
         BackPropagation backPropagation = new BackPropagation();
